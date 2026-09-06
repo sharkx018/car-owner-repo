@@ -191,8 +191,7 @@
 
   .owner-bottom {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 10px;
     padding-left: 54px;
   }
@@ -201,18 +200,15 @@
     color: var(--muted);
     font-size: 0.86rem;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
   }
 
   .owner-actions {
     display: flex;
     gap: 8px;
-    flex-shrink: 0;
   }
 
   .btn {
+    flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
