@@ -4,3 +4,4 @@ index.html
 *.jpg
 *.jpeg
 !car_logo.png
+.DS_Store
