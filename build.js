@@ -18,6 +18,8 @@ const templatePath = path.join(root, "template.html");
 const outPath = path.join(root, "index.html");
 
 const REQUIRED_KEYS = ["CAR_NUMBER", "OWNER_NAMES", "OWNER_PHONES"];
+const OPTIONAL_KEYS = ["CAR_MODEL"];
+const ALL_KEYS = [...REQUIRED_KEYS, ...OPTIONAL_KEYS];
 
 function parseEnvFile(content) {
   const vars = {};
@@ -34,9 +36,9 @@ function parseEnvFile(content) {
 }
 
 function loadEnv() {
-  // Start with whatever's already in process.env (e.g. from CI secrets).
+  // Start with whatever's already in process.env (e.g. from CI variables).
   const vars = {};
-  for (const key of REQUIRED_KEYS) {
+  for (const key of ALL_KEYS) {
     if (process.env[key]) vars[key] = process.env[key];
   }
   // Layer in .env file values when present (local dev), without
