@@ -3,7 +3,7 @@
 //
 // Locally: reads .env (gitignored, never committed) if present.
 // In CI (GitHub Actions): .env doesn't exist, so it falls back to
-// process.env, populated from GitHub repository secrets — see
+// process.env, populated from GitHub repository variables — see
 // .github/workflows/deploy.yml. Either way, the real values never
 // need to be committed to the repo.
 //

@@ -29,11 +29,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build index.html from secrets
+      - name: Build index.html from repo variables
         env:
-          CAR_NUMBER: ${{ secrets.CAR_NUMBER }}
-          OWNER_NAMES: ${{ secrets.OWNER_NAMES }}
-          OWNER_PHONES: ${{ secrets.OWNER_PHONES }}
+          CAR_NUMBER: ${{ vars.CAR_NUMBER }}
+          OWNER_NAMES: ${{ vars.OWNER_NAMES }}
+          OWNER_PHONES: ${{ vars.OWNER_PHONES }}
         run: node build.js
 
       - name: Prepare deploy folder
