@@ -64,21 +64,30 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
+function initials(name) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const first = parts[0]?.[0] || "";
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+  return (first + last).toUpperCase();
+}
+
 function ownerCardHtml(name, phone, index) {
   const cleanPhone = phone.replace(/[^\d+]/g, "");
   const waPhone = cleanPhone.replace(/^\+/, "");
+  const avatarStyle = `background: var(--avatar-${(index % 4) + 1})`;
   return `
-    <div class="owner">
-      <div class="owner-info">
-        <div class="owner-label">Owner ${index + 1}</div>
-        <div class="owner-name">${escapeHtml(name)}</div>
-        <div class="owner-phone">${escapeHtml(phone)}</div>
-      </div>
-      <div class="owner-actions">
-        <a class="btn btn-call" href="tel:${escapeHtml(cleanPhone)}" aria-label="Call ${escapeHtml(name)}">📞</a>
-        <a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(waPhone)}" aria-label="WhatsApp ${escapeHtml(name)}">💬</a>
-      </div>
-    </div>`;
+      <div class="owner">
+        <div class="avatar" style="${avatarStyle}">${escapeHtml(initials(name))}</div>
+        <div class="owner-info">
+          <div class="owner-label">Owner ${index + 1}</div>
+          <div class="owner-name">${escapeHtml(name)}</div>
+          <div class="owner-phone">${escapeHtml(phone)}</div>
+        </div>
+        <div class="owner-actions">
+          <a class="btn btn-call" href="tel:${escapeHtml(cleanPhone)}" aria-label="Call ${escapeHtml(name)}">📞</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(waPhone)}" aria-label="WhatsApp ${escapeHtml(name)}">💬</a>
+        </div>
+      </div>`;
 }
 
 const env = loadEnv();

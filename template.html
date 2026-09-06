@@ -6,32 +6,40 @@
 <title>{{CAR_NUMBER}} — Owner Contact</title>
 <style>
   :root {
-    --bg: #f2f4f7;
+    --bg-a: #eef2ff;
+    --bg-b: #f5f3ff;
+    --bg-c: #fdf2f8;
     --card-bg: #ffffff;
-    --text: #1a1d23;
+    --text: #1a1d29;
     --muted: #6b7280;
-    --border: #e5e7eb;
-    --accent: #1e3a8a;
-    --accent-text: #ffffff;
-    --plate-bg: #fbbf24;
-    --plate-border: #1a1d23;
-    --call-bg: #16a34a;
-    --whatsapp-bg: #22c55e;
-    --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    --border: #ecebf3;
+    --plate-bg: linear-gradient(180deg, #ffffff 0%, #f4f4f6 100%);
+    --plate-border: #1a1d29;
+    --plate-stripe: #1e3a8a;
+    --plate-stripe-text: #ffffff;
+    --call-bg: linear-gradient(135deg, #22c55e, #16a34a);
+    --whatsapp-bg: linear-gradient(135deg, #34d399, #059669);
+    --shadow: 0 20px 45px -15px rgba(30, 41, 82, 0.25);
+    --shadow-soft: 0 2px 10px rgba(30, 41, 82, 0.06);
+    --avatar-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+    --avatar-2: linear-gradient(135deg, #ec4899, #f97316);
+    --avatar-3: linear-gradient(135deg, #06b6d4, #3b82f6);
+    --avatar-4: linear-gradient(135deg, #f59e0b, #ef4444);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0f1115;
-      --card-bg: #1a1d23;
-      --text: #f2f4f7;
-      --muted: #9aa1ac;
-      --border: #2a2e37;
-      --accent: #3b5fc4;
-      --accent-text: #ffffff;
-      --plate-bg: #fbbf24;
-      --plate-border: #0f1115;
-      --shadow: 0 8px 24px rgba(0,0,0,0.4);
+      --bg-a: #0b0e17;
+      --bg-b: #12101f;
+      --bg-c: #170f1a;
+      --card-bg: #171a26;
+      --text: #f4f5f8;
+      --muted: #9aa1b2;
+      --border: #262a3a;
+      --plate-bg: linear-gradient(180deg, #f4f4f6 0%, #e5e5e8 100%);
+      --plate-border: #0b0e17;
+      --shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+      --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -44,71 +52,130 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    background: var(--bg);
+    background: radial-gradient(circle at 15% 10%, var(--bg-a), transparent 55%),
+                radial-gradient(circle at 85% 15%, var(--bg-c), transparent 50%),
+                var(--bg-b);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   .card {
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 24px;
     box-shadow: var(--shadow);
-    padding: 28px 24px 24px;
+    padding: 32px 26px 26px;
     text-align: center;
+    animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
   }
 
   .plate {
-    display: inline-block;
+    display: block;
     background: var(--plate-bg);
-    color: #1a1d23;
+    color: #16181f;
     border: 3px solid var(--plate-border);
-    border-radius: 8px;
-    padding: 10px 22px;
-    font-size: 1.6rem;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 22px;
+    max-width: 300px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .plate-band {
+    background: var(--plate-stripe);
+    color: var(--plate-stripe-text);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 4px 0;
+  }
+
+  .plate-number {
+    font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     font-family: "Courier New", monospace;
-    margin-bottom: 6px;
+    padding: 10px 18px 12px;
   }
 
   .subtitle {
     color: var(--muted);
-    font-size: 0.85rem;
-    margin: 10px 0 24px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.88rem;
+    margin: 0 0 24px;
+    font-weight: 500;
+  }
+
+  .owners {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .owner {
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px 18px;
-    margin-bottom: 14px;
+    border-radius: 16px;
+    padding: 14px 16px;
     text-align: left;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
+    background: color-mix(in srgb, var(--card-bg) 96%, var(--text) 4%);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
 
-  .owner:last-of-type { margin-bottom: 0; }
+  .owner:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
 
-  .owner-info { min-width: 0; }
+  .avatar {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  .owner-info { min-width: 0; flex: 1; }
 
   .owner-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 2px;
+    font-weight: 600;
   }
 
   .owner-name {
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     margin-bottom: 2px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -117,7 +184,7 @@
 
   .owner-phone {
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
   }
 
   .owner-actions {
@@ -130,35 +197,46 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 12px;
     text-decoration: none;
-    font-size: 1.2rem;
-    color: var(--accent-text);
-    transition: transform 0.15s ease;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: transform 0.15s ease, filter 0.15s ease;
   }
 
-  .btn:active { transform: scale(0.92); }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: scale(0.9); }
 
   .btn-call { background: var(--call-bg); }
   .btn-whatsapp { background: var(--whatsapp-bg); }
 
   .footer-note {
-    margin-top: 20px;
+    margin-top: 22px;
     font-size: 0.75rem;
     color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
   }
 </style>
 </head>
 <body>
   <div class="card">
-    <div class="plate">{{CAR_NUMBER}}</div>
-    <div class="subtitle">Vehicle Owner Contact</div>
+    <span class="eyebrow">🚗 Vehicle Contact Card</span>
+    <div class="plate">
+      <div class="plate-band">INDIA</div>
+      <div class="plate-number">{{CAR_NUMBER}}</div>
+    </div>
+    <p class="subtitle">Scan or tap to reach the owner directly</p>
 
-    {{OWNERS}}
+    <div class="owners">
+      {{OWNERS}}
+    </div>
 
-    <div class="footer-note">Tap a button to call or message the owner directly.</div>
+    <div class="footer-note">🔒 Private contact card — tap to call or message</div>
   </div>
 </body>
 </html>
