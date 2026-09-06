@@ -282,6 +282,31 @@
     opacity: 0.7;
     text-align: center;
   }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .socials a {
+    display: flex;
+    color: var(--muted);
+    opacity: 0.7;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+
+  .socials a:hover {
+    opacity: 1;
+    color: var(--text);
+  }
+
+  .socials svg {
+    width: 16px;
+    height: 16px;
+  }
 </style>
 </head>
 <body>
@@ -306,6 +331,20 @@
 
     <div class="footer-note">🔒 Private contact card — tap to call or message</div>
     <div class="credit">© Mukul Verma ⚡</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/mukul-verma-03151a139/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.762 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-1.337-.025-3.059-1.867-3.059-1.868 0-2.154 1.459-2.154 2.964v5.699h-3v-11h2.881v1.503h.041c.401-.759 1.379-1.559 2.841-1.559 3.037 0 3.6 2 3.6 4.601v6.455z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/vrma018_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+    </div>
   </div>
 </body>
 </html>
