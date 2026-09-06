@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{{CAR_NUMBER}} — Owner Contact</title>
+<title>{{CAR_MODEL}} ({{CAR_NUMBER}}) — Owner Contact</title>
 <style>
   :root {
     --bg-a: #eef2ff;
@@ -77,16 +77,52 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  .eyebrow {
-    display: inline-flex;
+  .brand {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.7rem;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .logo-badge {
+    flex-shrink: 0;
+    width: 76px;
+    height: 76px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px;
+  }
+
+  .logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .brand-text {
+    text-align: left;
+  }
+
+  .brand-name {
+    font-weight: 800;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-tag {
+    font-size: 0.68rem;
     font-weight: 600;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 16px;
+    letter-spacing: 0.07em;
   }
 
   .plate {
@@ -97,7 +133,7 @@
     border-radius: 10px;
     overflow: hidden;
     margin: 0 auto 22px;
-    max-width: 300px;
+    max-width: 200px;
     box-shadow: var(--shadow-soft);
   }
 
@@ -111,11 +147,11 @@
   }
 
   .plate-number {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     font-family: "Courier New", monospace;
-    padding: 10px 18px 12px;
+    padding: 7px 16px 8px;
   }
 
   .subtitle {
@@ -242,7 +278,15 @@
 </head>
 <body>
   <div class="card">
-    <span class="eyebrow">🚗 Vehicle Contact Card</span>
+    <div class="brand">
+      <div class="logo-badge">
+        <img src="car_logo.png" alt="{{CAR_MODEL}} logo" />
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">{{CAR_MODEL}}</div>
+        <div class="brand-tag">Vehicle Contact Card</div>
+      </div>
+    </div>
     <div class="plate">
       <div class="plate-band">INDIA</div>
       <div class="plate-number">{{CAR_NUMBER}}</div>

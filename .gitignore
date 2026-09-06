@@ -3,3 +3,4 @@ index.html
 *.png
 *.jpg
 *.jpeg
+!car_logo.png

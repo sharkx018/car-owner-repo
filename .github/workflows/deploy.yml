@@ -32,6 +32,7 @@ jobs:
       - name: Build index.html from repo variables
         env:
           CAR_NUMBER: ${{ vars.CAR_NUMBER }}
+          CAR_MODEL: ${{ vars.CAR_MODEL }}
           OWNER_NAMES: ${{ vars.OWNER_NAMES }}
           OWNER_PHONES: ${{ vars.OWNER_PHONES }}
         run: node build.js
@@ -40,6 +41,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          cp car_logo.png _site/car_logo.png
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

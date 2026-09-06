@@ -113,6 +113,7 @@ const ownersHtml = names
 
 html = html.split("{{OWNERS}}").join(ownersHtml);
 html = html.split("{{CAR_NUMBER}}").join(escapeHtml(env.CAR_NUMBER));
+html = html.split("{{CAR_MODEL}}").join(escapeHtml(env.CAR_MODEL || ""));
 
 fs.writeFileSync(outPath, html);
 console.log(`Generated ${outPath} with ${names.length} owner(s)`);
