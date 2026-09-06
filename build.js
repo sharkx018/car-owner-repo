@@ -77,15 +77,19 @@ function ownerCardHtml(name, phone, index) {
   const avatarStyle = `background: var(--avatar-${(index % 4) + 1})`;
   return `
       <div class="owner">
-        <div class="avatar" style="${avatarStyle}">${escapeHtml(initials(name))}</div>
-        <div class="owner-info">
-          <div class="owner-label">Owner ${index + 1}</div>
-          <div class="owner-name">${escapeHtml(name)}</div>
-          <div class="owner-phone">${escapeHtml(phone)}</div>
+        <div class="owner-top">
+          <div class="avatar" style="${avatarStyle}">${escapeHtml(initials(name))}</div>
+          <div class="owner-info">
+            <div class="owner-label">Owner ${index + 1}</div>
+            <div class="owner-name">${escapeHtml(name)}</div>
+          </div>
         </div>
-        <div class="owner-actions">
-          <a class="btn btn-call" href="tel:${escapeHtml(cleanPhone)}" aria-label="Call ${escapeHtml(name)}">📞</a>
-          <a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(waPhone)}" aria-label="WhatsApp ${escapeHtml(name)}">💬</a>
+        <div class="owner-bottom">
+          <div class="owner-phone">${escapeHtml(phone)}</div>
+          <div class="owner-actions">
+            <a class="btn btn-call" href="tel:${escapeHtml(cleanPhone)}" aria-label="Call ${escapeHtml(name)}">📞 Call</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/${escapeHtml(waPhone)}" aria-label="WhatsApp ${escapeHtml(name)}">💬 Chat</a>
+          </div>
         </div>
       </div>`;
 }
