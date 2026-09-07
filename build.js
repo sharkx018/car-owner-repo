@@ -15,11 +15,18 @@ const path = require("path");
 const root = __dirname;
 const envPath = path.join(root, ".env");
 const templatePath = path.join(root, "template.html");
+const maintenancePath = path.join(root, "maintenance.html");
 const outPath = path.join(root, "index.html");
 
 const REQUIRED_KEYS = ["CAR_NUMBER", "OWNER_NAMES", "OWNER_PHONES"];
-const OPTIONAL_KEYS = ["CAR_MODEL"];
+const OPTIONAL_KEYS = ["CAR_MODEL", "IS_ACTIVE"];
 const ALL_KEYS = [...REQUIRED_KEYS, ...OPTIONAL_KEYS];
+
+// Feature flag: IS_ACTIVE = true/false. Empty or "false" (case-insensitive)
+// serves the maintenance/downtime page instead of the owner contact card.
+function isActive(value) {
+  return String(value ?? "").trim().toLowerCase() === "true";
+}
 
 function parseEnvFile(content) {
   const vars = {};
@@ -97,6 +104,15 @@ function ownerCardHtml(name, phone, index) {
 }
 
 const env = loadEnv();
+
+if (!isActive(env.IS_ACTIVE)) {
+  let maintenanceHtml = fs.readFileSync(maintenancePath, "utf8");
+  maintenanceHtml = maintenanceHtml.split("{{CAR_MODEL}}").join(escapeHtml(env.CAR_MODEL || ""));
+  fs.writeFileSync(outPath, maintenanceHtml);
+  console.log(`IS_ACTIVE is false/empty — generated ${outPath} with the maintenance page`);
+  process.exit(0);
+}
+
 let html = fs.readFileSync(templatePath, "utf8");
 
 const names = env.OWNER_NAMES.split(",").map((s) => s.trim());
