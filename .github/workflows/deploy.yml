@@ -35,6 +35,7 @@ jobs:
           CAR_MODEL: ${{ vars.CAR_MODEL }}
           OWNER_NAMES: ${{ vars.OWNER_NAMES }}
           OWNER_PHONES: ${{ vars.OWNER_PHONES }}
+          IS_ACTIVE: ${{ vars.IS_ACTIVE }}
         run: node build.js
 
       - name: Prepare deploy folder

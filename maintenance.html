@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{CAR_MODEL}} — Temporarily Unavailable</title>
+<style>
+  :root {
+    --bg-a: #eef2ff;
+    --bg-b: #f5f3ff;
+    --bg-c: #fdf2f8;
+    --card-bg: #ffffff;
+    --text: #1a1d29;
+    --muted: #6b7280;
+    --border: #ecebf3;
+    --shadow: 0 20px 45px -15px rgba(30, 41, 82, 0.25);
+    --shadow-soft: 0 2px 10px rgba(30, 41, 82, 0.06);
+    --icon-bg: linear-gradient(135deg, #f59e0b, #ef4444);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-a: #0b0e17;
+      --bg-b: #12101f;
+      --bg-c: #170f1a;
+      --card-bg: #171a26;
+      --text: #f4f5f8;
+      --muted: #9aa1b2;
+      --border: #262a3a;
+      --shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+      --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 15% 10%, var(--bg-a), transparent 55%),
+                radial-gradient(circle at 85% 15%, var(--bg-c), transparent 50%),
+                var(--bg-b);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 40px 28px 32px;
+    text-align: center;
+    animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .icon-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0 auto 22px;
+    background: var(--icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .icon-badge svg {
+    width: 34px;
+    height: 34px;
+    color: #fff;
+  }
+
+  .title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 9v4"></path>
+        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path>
+        <path d="M12 17h.01"></path>
+      </svg>
+    </div>
+    <div class="title">Under Maintenance</div>
+    <p class="subtitle">This contact card for {{CAR_MODEL}} is temporarily unavailable. Please check back shortly.</p>
+  </div>
+</body>
+</html>
