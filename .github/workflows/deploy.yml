@@ -40,9 +40,24 @@ jobs:
 
       - name: Prepare deploy folder
         run: |
-          mkdir -p _site
-          cp index.html _site/index.html
-          cp car_logo.png _site/car_logo.png
+          mkdir -p _site/car-info
+          cp index.html _site/car-info/index.html
+          cp car_logo.png _site/car-info/car_logo.png
+          cat > _site/index.html <<'EOF'
+          <!doctype html>
+          <html>
+            <head>
+              <meta charset="utf-8" />
+              <meta http-equiv="refresh" content="0; url=/car-info" />
+              <link rel="canonical" href="/car-info" />
+              <title>Redirecting…</title>
+            </head>
+            <body>
+              <p>Redirecting to <a href="/car-info">/car-info</a>…</p>
+              <script>location.replace("/car-info");</script>
+            </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
